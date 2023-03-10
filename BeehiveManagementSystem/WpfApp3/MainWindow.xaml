@@ -1,0 +1,38 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="BeehiveManagementSystem" Height="325" Width="625">
+
+    <Window.Resources>
+        <local:Queen x:Key="queen"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource queen}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button x:Name="WorkShift" Content="Work the next shift" Margin="20,20,20,20" Grid.Row="2" FontSize="18" Click="WorkShift_Click"/>
+        <Label x:Name="Job_Assignments" Content="Job Assignments" HorizontalAlignment="Center" Margin="20,0" VerticalAlignment="Bottom" FontSize="18"/>
+        <Label x:Name="Queen_s_Report" Grid.Column="1" Content="Queen's Report" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18" Margin="20,0,20,0"/>
+        <TextBox x:Name="statusReport" Grid.Column="1" Margin="20,20,20,20" Grid.Row="1" TextWrapping="Wrap" Grid.RowSpan="2" IsReadOnly="True" Text="{Binding StatusReport, Mode=OneWay}"/>
+        <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="20,20,20,20">
+            <ComboBox x:Name="jobSelector" FontSize="18" Margin="0,0,0,20" SelectedIndex="0">
+            <ListBoxItem Content="Nectar Collector"/>
+            <ListBoxItem Content="Honey Manufacturer"/>
+            <ListBoxItem Content="Egg Care"/>
+            </ComboBox>
+            <Button x:Name="AssignJob" Content="Assign this job to a bee" FontSize="18" Click="AssignJob_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
